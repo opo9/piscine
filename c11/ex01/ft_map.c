@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
+/*   ft_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaugues <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 16:53:24 by psaugues          #+#    #+#             */
-/*   Updated: 2022/07/06 17:05:27 by psaugues         ###   ########lyon.fr   */
+/*   Created: 2022/07/22 12:55:12 by psaugues          #+#    #+#             */
+/*   Updated: 2022/07/22 13:39:11 by psaugues         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_print_reverse_alphabet(void)
+int	*ft_map(int *tab, int length, int (*f)(int))
 {
-	char	lettre;
+	int	i;
+	int	*tab_r;
 
-	lettre = 123;
-	while (lettre > 97)
-	{
-		lettre--;
-		write(1, &lettre, 1);
-	}
+	tab_r = malloc(sizeof(int) * length);
+	i = -1;
+	while (++i < length)
+		tab_r[i] = (*f)(tab[i]);
+	return (tab_r);
 }

@@ -6,7 +6,7 @@
 /*   By: psaugues <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/17 10:39:36 by psaugues          #+#    #+#             */
-/*   Updated: 2022/07/17 17:52:44 by psaugues         ###   ########lyon.fr   */
+/*   Updated: 2022/07/18 09:38:22 by psaugues         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	print(char **argv)
 void	loop(int i, int k, char **argv)
 {
 	char	*a;
-	int		j;
 
 	while (argv[i])
 	{
@@ -78,7 +77,6 @@ void	loop(int i, int k, char **argv)
 		{
 			if (ft_strcmp(argv[i], argv[k]) > 0)
 			{
-				printf("%d, %d\n", i, k);
 				a = argv [i];
 				argv[i] = argv[k];
 				argv[k] = a;

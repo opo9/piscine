@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_negative.c                                   :+:      :+:    :+:   */
+/*   ft_display.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaugues <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 17:26:55 by psaugues          #+#    #+#             */
-/*   Updated: 2022/07/06 20:01:34 by psaugues         ###   ########lyon.fr   */
+/*   Created: 2022/07/22 10:18:03 by psaugues          #+#    #+#             */
+/*   Updated: 2022/07/22 11:07:48 by psaugues         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
-void	ft_is_negative(int chiffre)
+void	ft_display(char *file_name)
 {
-	if (chiffre >= 0)
-	{
-		write(1, "P", 1);
-	}
+	int	file_read;
+
+
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc > 2)
+		write(1,"Too many arguments.\n",20);
+	else if (argc < 2)
+		write(1, "File name missing.\n",18);
 	else
-		write(1, "N", 1);
+		ft_display(argv[1]);
+	return (0);	
 }

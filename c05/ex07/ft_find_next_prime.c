@@ -6,7 +6,7 @@
 /*   By: psaugues <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 18:49:56 by psaugues          #+#    #+#             */
-/*   Updated: 2022/07/15 13:29:26 by psaugues         ###   ########lyon.fr   */
+/*   Updated: 2022/07/26 22:45:25 by psaugues         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	ft_is_prime(int nb)
 	int	square_up;
 
 	i = 2;
+	if (nb < 0)
+		return (0);
 	if (nb == 0 || nb == 1)
 		return (0);
 	if (ft_sqrt(nb) == 1)

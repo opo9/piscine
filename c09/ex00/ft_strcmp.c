@@ -6,11 +6,11 @@
 /*   By: psaugues <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 16:11:45 by psaugues          #+#    #+#             */
-/*   Updated: 2022/07/13 15:42:43 by psaugues         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 18:25:36 by psaugues         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *word)
+int	ft_strlenn(char *word)
 {
 	int	size;
 
@@ -28,8 +28,8 @@ int	ft_strcmp(char *s1, char *s2)
 	int	size_s1;
 	int	size_s2;
 
-	size_s1 = ft_strlen(s1);
-	size_s2 = ft_strlen(s2);
+	size_s1 = ft_strlenn(s1);
+	size_s2 = ft_strlenn(s2);
 	i = 0;
 	while (i <= size_s1 +1 && i <= size_s2 + 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: psaugues <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:39:26 by psaugues          #+#    #+#             */
-/*   Updated: 2022/07/20 16:04:20 by psaugues         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 15:43:04 by psaugues         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,59 +40,61 @@ char	**create_tab(char *str, char *charset)
 	int		i;
 	int		counter;
 	int		str_len;
-	int		j;
 	char	**tab;
+	int		prev_in;
 
 	tab = NULL;
 	str_len = ft_strlen(str);
-	i = -1;
 	counter = 0;
-	while (str[++i])
-		if (in(str[i], charset) == 1 && in(str[i + 1], charset) == 0)
-			counter++;
-	tab = malloc(sizeof(char *) * counter + 1);
 	i = -1;
-	while (++i <= counter)
+	prev_in = 1;
+	while (str[++i])
 	{
-		tab[i] = malloc(sizeof(char) * str_len + 1);
-		j = -1;
-		while (++j <= str_len)
-			tab[i][j] = '\0';
+		if (!in(str[i], charset) && prev_in)
+			counter++;
+		prev_in = in(str[i], charset);
 	}
+	tab = (char **)malloc(sizeof(char *) * (counter + 1));
+	tab[counter] = NULL;
+	i = -1;
+	while (++i < counter)
+		tab[i] = malloc(sizeof(char) * (str_len + 1));
 	return (tab);
 }
 
-char	**check(char chr, char *charset, char **tab)
+void	print_in_tab(char *src, char *dest, char *charset)
 {
-	if (in(chr, charset))
-		return (tab + 1);
-	return (tab);
+	int	i;
+
+	i = 0;
+	while (src[i] && !in(src[i], charset))
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
 }
 
 char	**ft_split(char *str, char *charset)
 {
 	int		i;
-	int		k;
 	int		count;
 	char	**tab;
-	int		str_len;
+	int		prev_in;
 
 	tab = create_tab(str, charset);
-	k = 0;
+	i = 0;
 	count = 0;
-	i = -1;
-	str_len = ft_strlen(str);
-	while (++i <= str_len)
+	prev_in = 1;
+	while (str[i])
 	{
-		while (in(str[i], charset) == 1 && in(str[i + 1], charset) == 1)
-			i++;
-		if (in(str[i], charset) == 1 && in(str[1 + i++], charset) == 0)
+		if (!in(str[i], charset) && prev_in)
 		{
-			k = 0;
+			print_in_tab(str + i, tab[count], charset);
 			count++;
 		}
-		tab[count][k++] = str[i];
+		prev_in = in(str[i], charset);
+		i++;
 	}
-	tab[count + 1] = 0;
-	return (check(str[0], charset, tab));
+	return (tab);
 }

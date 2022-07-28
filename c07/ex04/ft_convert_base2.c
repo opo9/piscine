@@ -6,13 +6,12 @@
 /*   By: psaugues <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:34:59 by psaugues          #+#    #+#             */
-/*   Updated: 2022/07/19 17:35:36 by psaugues         ###   ########lyon.fr   */
+/*   Updated: 2022/07/27 15:31:16 by psaugues         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-int	ft_strlen(char *word);
 int	is_there_an_error(char *base);
 
 int	ft_strlen(char *word)
@@ -44,25 +43,19 @@ void	ft_rev_int_tab(char	*tab, int size)
 
 void	add(int nbr_to_print, char *base, int k, char *tab)
 {
-	char	test;
-
 	if (nbr_to_print != '-')
-	{
-		test = base[nbr_to_print];
-		tab[k] = test;
-	}
+		tab[k] = base[nbr_to_print];
 	else
-	{
 		tab[k] = '-';
-	}
 }
-
+#include <stdio.h>
 void	ft_putnbr_inside(long long int nb, char *base, char *tab, int k)
 {
 	int	base_len;
 
 	k++;
 	base_len = ft_strlen(base);
+	printf("%lld,%d\n",nb,base_len);
 	if (nb >= 0 && nb < base_len)
 		add(nb, base, k, tab);
 	else if (nb < 0)
@@ -70,7 +63,7 @@ void	ft_putnbr_inside(long long int nb, char *base, char *tab, int k)
 		add('-', base, k, tab);
 		ft_putnbr_inside(nb * -1, base, tab, k);
 	}
-	else if (nb < base_len * base_len)
+	else if (nb > base_len)
 	{
 		ft_putnbr_inside(nb / base_len, base, tab, k + 1);
 		ft_putnbr_inside(nb % base_len, base, tab, k);

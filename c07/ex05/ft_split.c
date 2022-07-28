@@ -6,7 +6,7 @@
 /*   By: psaugues <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 13:39:26 by psaugues          #+#    #+#             */
-/*   Updated: 2022/07/20 16:04:20 by psaugues         ###   ########lyon.fr   */
+/*   Updated: 2022/07/28 12:44:04 by psaugues         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ char	**create_tab(char *str, char *charset)
 	while (str[++i])
 		if (in(str[i], charset) == 1 && in(str[i + 1], charset) == 0)
 			counter++;
-	tab = malloc(sizeof(char *) * counter + 1);
+	tab = malloc(sizeof(char *) * (2 * counter + 1));
 	i = -1;
 	while (++i <= counter)
 	{
-		tab[i] = malloc(sizeof(char) * str_len + 1);
+		tab[i] = malloc(sizeof(char) * (2 * str_len + 1));
 		j = -1;
 		while (++j <= str_len)
 			tab[i][j] = '\0';
@@ -95,4 +95,20 @@ char	**ft_split(char *str, char *charset)
 	}
 	tab[count + 1] = 0;
 	return (check(str[0], charset, tab));
+}
+
+#include <stdio.h>
+
+int main (int argc, char **argv)
+{
+	char **res;
+	int i;
+
+	i = 0;
+	res = ft_split(argv[1], argv[2]);
+	while (res[i])
+	{
+		printf("%s", res[i]);
+		i++;
+	}
 }

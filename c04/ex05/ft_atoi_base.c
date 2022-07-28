@@ -6,7 +6,7 @@
 /*   By: psaugues <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 13:15:18 by psaugues          #+#    #+#             */
-/*   Updated: 2022/07/14 14:29:58 by psaugues         ###   ########lyon.fr   */
+/*   Updated: 2022/07/27 01:32:56 by psaugues         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ int	conditions(char value_of_str, char *base, int ret)
 	check = 0;
 	base_len = ft_strlen(base);
 	chr_index = index_of(value_of_str, base);
-	ret = ret * base_len + chr_index;
 	if (chr_index < 0)
+	{
 		check = 1;
-	if (check == 1)
-		ret = 0;
+		return (ret);
+	}
+	ret = ret * base_len + chr_index;
 	return (ret);
 }
 
@@ -98,7 +99,7 @@ int	ft_atoi_base(char *str, char *base)
 			sign += 1;
 		i++;
 	}
-	while (str[i])
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		ret = conditions(str[i], base, ret);
 		i++;

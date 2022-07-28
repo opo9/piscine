@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaugues <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/15 10:48:48 by psaugues          #+#    #+#             */
-/*   Updated: 2022/07/18 14:11:57 by psaugues         ###   ########lyon.fr   */
+/*   Created: 2022/07/26 22:30:40 by psaugues          #+#    #+#             */
+/*   Updated: 2022/07/27 04:11:52 by psaugues         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int	main(int argc, char **argv)
+int	ft_count_if(char **tab, int (*f)(char*))
 {
-	int		i;
-	int		j;
-	char	*stock;
+	int	i;
+	int	a;
 
-	(void) argc;
-	(void) argv;
-	i = 1;
-	j = 0;
-	while (argv[i])
+	i = -1;
+	a = 0;
+	while (tab[++i])
 	{
-		j = 0;
-		stock = argv[i];
-		while (stock[j])
-		{
-			write(1, &stock[j], 1);
-			j++;
-		}
-		write(1, "\n", 1);
-		i++;
+		if ((*f)(&tab[i]) != 0)
+			a++;
 	}
+	return (a);
 }

@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psaugues <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/06 14:35:08 by psaugues          #+#    #+#             */
-/*   Updated: 2022/07/06 15:10:59 by psaugues         ###   ########lyon.fr   */
+/*   Created: 2022/07/22 11:19:50 by psaugues          #+#    #+#             */
+/*   Updated: 2022/07/22 11:39:22 by psaugues         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
+void	ft_foreach(int *tab, int length, void (*f)(int))
 {
-	write(1, &c, 1);
+	int	i;
+
+	i = -1;
+	while (++i < length)
+		(*f)(tab[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: psaugues <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 13:29:35 by psaugues          #+#    #+#             */
-/*   Updated: 2022/07/19 17:46:44 by psaugues         ###   ########lyon.fr   */
+/*   Updated: 2022/07/27 15:50:57 by psaugues         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int	ft_atoi_base(char *str, char *base)
 			sign += 1;
 		i++;
 	}
-	while (str[i])
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		ret = conditions(str[i], base, ret);
 		i++;
@@ -101,6 +101,8 @@ int	ft_atoi_base(char *str, char *base)
 	return (ret);
 }
 
+
+#include <stdio.h>
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int		number;
@@ -114,10 +116,17 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	while (++i < 35)
 		tab[i] = '\0';
 	number = ft_atoi_base(nbr, base_from);
+	printf("%d\n",number);
 	ft_putnbr_base(number, base_to, tab, -2);
 	i = 0;
 	while (tab[i])
 		i++;
 	ft_rev_int_tab(tab, i);
 	return (tab);
+}
+
+#include <stdio.h>
+int    main()
+{
+    printf("%s\n", ft_convert_base("11", "0123456789", "0123456789ABCDEF"));
 }
